@@ -5,6 +5,7 @@ const router = Router();
 const cartManager = new CartManager();
 
 router.get("/:id", async (req, res) => {
+    let user = req.session.user;
     const id = req.params.id;
     const bole = true;
     const cart = await cartManager.getCartById(id,bole);
@@ -21,8 +22,12 @@ router.get("/:id", async (req, res) => {
     }
     
     listaCarrito();
+    const carritoandUser ={
+        carritofinal,
+        user
+    }
     console.log(carrito)
-    res.render('cart',{carritofinal});
+    res.render('cart',{carritoandUser});
 });
 
 router.get("/", (req, res) => {

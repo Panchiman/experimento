@@ -6,6 +6,8 @@ function addToCartButton (idCart, idProduct){
 
 const botonAtras = document.getElementById('botonAtras');
 
-botonAtras.addEventListener('click', () => {
-    window.history.back();
-});
+function botonRemoveFromCart(idCart, idProduct){
+    console.log("carrito"+idCart+"producto"+idProduct)
+    fetch(`http://localhost:8080/carts/${idCart}/products/${idProduct}`,{
+        method:'DELETE',
+    })}
